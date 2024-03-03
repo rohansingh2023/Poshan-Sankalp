@@ -1,0 +1,258 @@
+"use client";
+import React, { useState } from "react";
+
+import BankRow from "@/components/bankrow/BankRow";
+import { useData } from "../../../context/DataContext";
+import IndexNavbar from "@/components/Navbars/IndexNavbar";
+
+const Bloodreq = () => {
+  const { arrData , updateArrData } = useData();
+  const [formData, setformData] = useState({
+    bloodType: "apos",
+    quantity: 0,
+    urgency: "urgent",
+    disease: "brainStrom",
+    hospital: "",
+    additionalInfo: "",
+  });
+
+  const handleChange = async (e) => {
+    const { name, value } = e.target;
+    console.log(arrData);
+    setformData({
+      ...formData,
+      [name]: value,
+    });
+    console.log(formData);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/bloodreq", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      // if (res.status === 40) {
+      //   throw new Error('Network response was not ok');
+      // }
+      // Parse the response as JSON
+      const data = await res.json();
+      if (res.status == 200) {
+        console.log(data.availableBloodbanks);
+        updateArrData(data.availableBloodbanks);
+        console.log("Data:", arrData);
+        // Alert that blood is available
+        alert("Blood is available");
+      }
+      if (res.status == 404) {
+        updateArrData([]);
+      }
+
+      const targetDiv = document.getElementById("scroll-div");
+      targetDiv.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (error) {
+      // Handle any errors
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  return (
+    <>
+    <IndexNavbar fixed />
+      <div className="container mx-auto mt-12 px-4">
+        <h1 className="text-3xl font-semibold mb-4">Request Blood</h1>
+        <form
+          className="bg-white p-12 m-12 rounded-lg shadow-2xl"
+          onSubmit={handleSubmit}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="shadow-lg">
+              <label
+                for="bloodType"
+                className="block text-lg font-medium text-gray-700 "
+              >
+                Blood Type
+              </label>
+              <select
+                id="bloodType"
+                name="bloodType"
+                value={formData.bloodType}
+                onChange={handleChange}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200  h-12 px-4 text-lg"
+              >
+                <option value="apos">A+</option>
+                <option value="aneg">A-</option>
+                <option value="bpos">B+</option>
+                <option value="bneg">B-</option>
+                <option value="abpos">AB+</option>
+                <option value="abneg">AB-</option>
+                <option value="opos">O+</option>
+                <option value="oneg">O-</option>
+              </select>
+            </div>
+            <div className="shadow-lg">
+              <label
+                for="quantity"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Quantity Needed (in units)
+              </label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                onChange={handleChange}
+                value={formData.quantity}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200  h-12 px-4 text-lg"
+              />
+            </div>
+          </div>
+          <div className="mt-6 shadow-lg">
+            <label
+              for="urgency"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Urgency
+            </label>
+            <select
+              id="urgency"
+              name="urgency"
+              onChange={handleChange}
+              value={formData.urgency}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 h-12 px-4 text-lg"
+            >
+              <option value="urgent">Urgent</option>
+              <option value="normal">Normal</option>
+            </select>
+          </div>
+
+          <div className="mt-6 shadow-lg">
+            <label
+              for="disease"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Operation Type
+            </label>
+            <select
+              id="disease"
+              name="disease"
+              onChange={handleChange}
+              value={formData.disease}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 h-12 px-4 text-lg"
+            >
+              <option value="brainStrom">brainStrom</option>
+              <option value="normal">Normal</option>
+              <option value="gynac">gynac</option>
+              <option value="normal">Normal</option>
+              <option value="urgent">Urgent</option>
+              <option value="normal">Normal</option>
+            </select>
+          </div>
+
+          <div className="mt-6 shadow-md">
+            <label
+              for="hospital"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Hospital Name
+            </label>
+            <input
+              type="text"
+              id="hospital"
+              name="hospital"
+              onChange={handleChange}
+              value={formData.hospital}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 h-12 px-4 text-lg"
+            />
+          </div>
+          <div className="mt-6 shadow-md">
+            <label
+              for="additionalInfo"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Additional Information
+            </label>
+            <textarea
+              id="additionalInfo"
+              name="additionalInfo"
+              onChange={handleChange}
+              value={formData.additionalInfo}
+              className="mt-1 block h-40 w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200"
+            ></textarea>
+          </div>
+          <div className="mt-6 shadow-mg">
+            <button
+              type="submit"
+              className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-200"
+            >
+              Submit Request
+            </button>
+          </div>
+        </form>
+      </div>
+
+      {/* ////////// */}
+
+      <section className="relative py-16 bg-blueGray-50" id="scroll-div">
+        <div className="w-full mb-12 px-4">
+          <div
+            className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded 
+    bg-pink-900 text-white"
+          >
+            <div className="rounded-t mb-0 px-4 py-3 border-0">
+              <div className="flex flex-wrap items-center">
+                <div className="relative w-full px-4 max-w-full flex-grow flex-1 ">
+                  <h3 className="font-semibold text-lg text-white">
+                    Blood Banks
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div className="block w-full overflow-x-auto ">
+              <table className="items-center w-full bg-transparent border-collapse">
+                <thead>
+                  <tr>
+                    <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">
+                      Name
+                    </th>
+                    <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">
+                      Blood G+-
+                    </th>
+                    <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">
+                      Quantity
+                    </th>
+                    <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">
+                      Contact
+                    </th>
+                    <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">
+                      Address
+                    </th>
+                    <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700" />
+                  </tr>
+                </thead>
+                <tbody>
+                  {arrData &&
+                    arrData.map((item, index) => (
+                      <BankRow
+                        key={index}
+                        name={item.name}
+                        email={item.email}
+                        contact={item.phone}
+                        address={item.address}
+                      />
+                    ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Bloodreq;
