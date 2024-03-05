@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import BankRow from "@/components/bankrow/BankRow";
 import { useData } from "../../../context/DataContext";
 import IndexNavbar from "@/components/Navbars/IndexNavbar";
-
+import AdminNavbar from "@/components/Navbars/AdminNavbar";
 const Bloodreq = () => {
   const { arrData , updateArrData } = useData();
   const [formData, setformData] = useState({
@@ -50,6 +50,7 @@ const Bloodreq = () => {
       }
       if (res.status == 404) {
         updateArrData([]);
+        alert("Sorry, The Blood that you are searching for is not available");
       }
 
       const targetDiv = document.getElementById("scroll-div");

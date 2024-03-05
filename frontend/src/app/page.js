@@ -19,20 +19,15 @@ export default function Index() {
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
             <div className="pt-32 sm:pt-0">
               <h2 className="font-semibold text-4xl text-blueGray-600">
-                IntelliCare  - Optimizing care with predictive AI.
+              Blood Camp: Transforming Healthcare with Predictive AI
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-              IntelliCare is an innovative healthcare system, which 
-              seamlessly integrates speech analysis, text extraction, and computer 
-              vision, to transform the delivery of emergency medical care.
-               Our strategy, aims to improve the overall healthcare experience 
-               by providing quick and improved outcomes for those in urgent need of
-                medical help.
+              Welcome to the BloodCare Blood Camp, where we bring revolutionary healthcare to your doorstep. BloodCare harnesses the power of predictive AI to optimize blood management, ensuring swift and efficient responses to blood-related emergencies. Join us at our camp as we integrate cutting-edge speech analysis, text extraction, and computer vision technologies to transform the way we address urgent blood-related assistance.
               </p>
               <div className="mt-12">
-                <Link href="/">
+                <Link href="/bloodcamp">
                   <button className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-800 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
-                    Get started
+                    Organized
                   </button>
                 </Link>
 

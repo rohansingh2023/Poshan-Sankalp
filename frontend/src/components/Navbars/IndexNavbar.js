@@ -29,7 +29,7 @@ export default function Navbar(props) {
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <div className="flex flex-row justify-around space-x-1">
               <img
-                src="https://res.cloudinary.com/atharva7/image/upload/v1678446486/samples/istockphoto-1335169133-612x612-removebg-preview_shco6q.png"
+                src="/blood-care-icon.png"
                 alt="up"
                 className="w-16 h-16 object-cover rounded-full cursor-pointer mt-1"
               />
@@ -73,6 +73,15 @@ export default function Navbar(props) {
                 <IndexDropdown />
               </li> */}
               <li className="flex items-center">
+                <Link href="/">
+                  <div className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-sm uppercase font-bold">
+                    Home
+                    {/* <span className="lg:hidden inline-block ml-2">Share</span> */}
+                  </div>
+                </Link>
+              </li>
+
+              <li className="flex items-center">
                 <Link href="/bloodreq">
                   <div className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-sm uppercase font-bold">
                     BloodReq
@@ -81,14 +90,7 @@ export default function Navbar(props) {
                 </Link>
               </li>
 
-              <li className="flex items-center">
-                <Link href="/">
-                  <div className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-sm uppercase font-bold">
-                    Home
-                    {/* <span className="lg:hidden inline-block ml-2">Share</span> */}
-                  </div>
-                </Link>
-              </li>
+
               <li className="flex items-center">
                 <Link href="/analyze">
                   <div className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-sm uppercase font-bold">
@@ -101,14 +103,6 @@ export default function Navbar(props) {
                 <Link href="/bookAp">
                   <div className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-sm uppercase font-bold">
                     Book Appointment
-                    {/* <span className="lg:hidden inline-block ml-2">Share</span> */}
-                  </div>
-                </Link>
-              </li>
-              <li className="flex items-center">
-                <Link href="/text">
-                  <div className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-sm uppercase font-bold">
-                  Health Advisor
                     {/* <span className="lg:hidden inline-block ml-2">Share</span> */}
                   </div>
                 </Link>
@@ -143,9 +137,17 @@ export default function Navbar(props) {
               </li>
 
               <li className="text-sm mr-4 hover:underline md:mr-2">
-                <a href="tel: 1930">
-                  <img src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/000000/external-phone-web-flaticons-flat-flat-icons-3.png" />
-                </a>
+                <Link href="/signup">
+                  <img width="45" height="45" src="https://img.icons8.com/external-bearicons-detailed-outline-bearicons/64/external-signup-call-to-action-bearicons-detailed-outline-bearicons.png"
+                    alt="external-signup-call-to-action-bearicons-detailed-outline-bearicons" />
+                </Link>
+              </li>
+              <li className="text-sm mr-4 hover:underline md:mr-2">
+                <Link href="/login1">
+                  <img
+                    width="45" height="45" src="https://img.icons8.com/ios-filled/50/login-rounded-right.png"
+                    alt="login-rounded-right" />
+                </Link>
               </li>
 
               {/* <li className="flex items-center">
