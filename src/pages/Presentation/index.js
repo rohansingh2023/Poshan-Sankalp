@@ -11,6 +11,8 @@ import footerRoutes from "footer.routes";
 import bgImage from "assets/images/bg_mal_2.png";
 import Counters from "./sections/Counters";
 import Dashboard from "./sections/Dashboard";
+// import TeleMedicine from "./sections/TeleMedicine";
+import Information from "./sections/Information";
 
 function Presentation() {
   return (
@@ -128,6 +130,10 @@ function Presentation() {
         </Container> */}
         {/* <Testimonials /> */}
         <Download />
+        {/* <div>
+          <TeleMedicine />
+        </div> */}
+        <Information />
         {/* <MKBox pt={18} pb={6}>
           <Container>
             <Grid container spacing={3}>
