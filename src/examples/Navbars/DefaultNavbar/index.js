@@ -472,40 +472,42 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
           >
             {renderNavbarItems}
           </MKBox>
-          <MKBox ml={{ xs: "auto", lg: 0 }}>
-            {action &&
-              (action.type === "internal" ? (
-                <MKButton
-                  component={Link}
-                  to={action.route}
-                  variant={
-                    action.color === "white" || action.color === "default"
-                      ? "contained"
-                      : "gradient"
-                  }
-                  color={action.color ? action.color : "info"}
-                  size="small"
-                >
-                  {action.label}
-                </MKButton>
-              ) : (
-                <MKButton
-                  component="a"
-                  href={action.route}
-                  target="_blank"
-                  rel="noreferrer"
-                  variant={
-                    action.color === "white" || action.color === "default"
-                      ? "contained"
-                      : "gradient"
-                  }
-                  color={action.color ? action.color : "info"}
-                  size="small"
-                >
-                  {action.label}
-                </MKButton>
-              ))}
-          </MKBox>
+          <Link to={"/signin"}>
+            <MKBox ml={{ xs: "auto", lg: 0 }}>
+              {action &&
+                (action.type === "internal" ? (
+                  <MKButton
+                    component={Link}
+                    // to={action.route}
+                    variant={
+                      action.color === "white" || action.color === "default"
+                        ? "contained"
+                        : "gradient"
+                    }
+                    color={action.color ? action.color : "info"}
+                    size="small"
+                  >
+                    {action.label}
+                  </MKButton>
+                ) : (
+                  <MKButton
+                    component="a"
+                    // href={action.route}
+                    target="_blank"
+                    rel="noreferrer"
+                    variant={
+                      action.color === "white" || action.color === "default"
+                        ? "contained"
+                        : "gradient"
+                    }
+                    color={action.color ? action.color : "info"}
+                    size="small"
+                  >
+                    {action.label}
+                  </MKButton>
+                ))}
+            </MKBox>
+          </Link>
           <MKBox
             display={{ xs: "inline-block", lg: "none" }}
             lineHeight={0}

@@ -5,7 +5,6 @@ import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
-// import Information from "pages/Presentation/sections/Information";
 import Download from "pages/Presentation/sections/Download";
 import routes from "routes";
 import footerRoutes from "footer.routes";
@@ -20,7 +19,7 @@ function Presentation() {
         routes={routes}
         action={{
           type: "external",
-          route: "https://www.creative-tim.com/product/material-kit-react",
+          route: "http://localhost:3000/signin",
           label: "Sign In",
           color: "info",
         }}

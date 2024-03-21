@@ -1,4 +1,5 @@
 import Icon from "@mui/material/Icon";
+import SignInBasic from "pages/LandingPages/SignIn";
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
   {
     name: "Dashboard",
     icon: <Icon>view_day</Icon>,
+  },
+  {
+    name: "SignIn",
+    route: "/signin",
+    component: <SignInBasic />,
   },
 ];
 

@@ -6,6 +6,7 @@ import MKTypography from "components/MKTypography";
 import bgImage from "assets/images/shapes/waves-white.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function Download() {
   const [file, setFile] = useState();
@@ -25,10 +26,14 @@ function Download() {
   console.log(file);
 
   const handleSubmit = async () => {
+    if (file === undefined) {
+      toast.error("No file selected!!");
+      return;
+    }
     const formData = new FormData();
     formData.append("file", file);
     setLoading(true);
-    // const id = toast.loading("Predicting....");
+    const id = toast.loading("Predicting....");
     try {
       const res = await axios.post("http://127.0.0.1:5000/predict-v2", formData, {
         headers: {
@@ -38,15 +43,15 @@ function Download() {
       setResult(res.data?.data);
       setLoading(false);
       setIsRes(true);
-      // toast.success("Prediction successfull", {
-      //   id,
-      // });
+      toast.success("Prediction successfull", {
+        id,
+      });
       console.log(res.data);
     } catch (error) {
       console.log(error);
-      // toast.error(`${error}`, {
-      //   id,
-      // });
+      toast.error(`${error}`, {
+        id,
+      });
     }
   };
 
@@ -157,7 +162,7 @@ function Download() {
                   sx={{ mt: 2 }}
                   onClick={handleSubmit}
                 >
-                  Download Now
+                  Predict
                 </MKButton>
               </div>
               {isRes && (
