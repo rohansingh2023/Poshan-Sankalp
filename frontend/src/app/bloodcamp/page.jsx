@@ -1,248 +1,259 @@
+
+"use client";
 import React from 'react'
-
+import IndexNavbar from "@/components/Navbars/IndexNavbar";
 function page() {
-  return (
-    <main className="flex-1 md:p-0 lg:pt-8 lg:px-8 md:ml-24 flex flex-col">
-  <section className="bg-cream-lighter p-4 shadow">
-    <div className="md:flex">
-      <h2 className="md:w-1/3 uppercase tracking-wide text-sm sm:text-lg mb-6">
-        Create New Location
-      </h2>
+  return (<>
+  <IndexNavbar fixed />
+   <div className="min-h-screen p-10 bg-gray-100 flex items-center justify-center">
+  <div className="container max-w-screen-lg mx-auto">
+    <div>
+      <h2 className="font-semibold text-xl text-gray-600">Responsive Form</h2>
+      <p className="text-gray-500 mb-6">
+        Form is mobile responsive. Give it a try.
+      </p>
+      <div className="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+        <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+          <div className="text-gray-600">
+            <p className="font-medium text-lg">Personal Details</p>
+            <p>Please fill out all the fields.</p>
+          </div>
+          <div className="lg:col-span-2">
+            <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+              <div className="md:col-span-5">
+                <label htmlFor="full_name">Full Name</label>
+                <input
+                  type="text"
+                  name="full_name"
+                  id="full_name"
+                  className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                  defaultValue=""
+                />
+              </div>
+              <div className="md:col-span-5">
+                <label htmlFor="email">Email Address</label>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                  defaultValue=""
+                  placeholder="email@domain.com"
+                />
+              </div>
+              <div className="md:col-span-3">
+                <label htmlFor="address">Address / Street</label>
+                <input
+                  type="text"
+                  name="address"
+                  id="address"
+                  className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                  defaultValue=""
+                  placeholder=""
+                />
+              </div>
+              <div className="md:col-span-2">
+                <label htmlFor="city">City</label>
+                <input
+                  type="text"
+                  name="city"
+                  id="city"
+                  className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                  defaultValue=""
+                  placeholder=""
+                />
+              </div>
+              <div className="md:col-span-2">
+                <label htmlFor="country">Country / region</label>
+                <div className="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
+                  <input
+                    name="country"
+                    id="country"
+                    placeholder="Country"
+                    className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"
+                    defaultValue=""
+                  />
+                  <button
+                    tabIndex={-1}
+                    className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600"
+                  >
+                    <svg
+                      className="w-4 h-4 mx-2 fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1={18} y1={6} x2={6} y2={18} />
+                      <line x1={6} y1={6} x2={18} y2={18} />
+                    </svg>
+                  </button>
+                  <button
+                    tabIndex={-1}
+                    htmlFor="show_more"
+                    className="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600"
+                  >
+                    <svg
+                      className="w-4 h-4 mx-2 fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="18 15 12 9 6 15" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div className="md:col-span-2">
+                <label htmlFor="state">State / province</label>
+                <div className="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
+                  <input
+                    name="state"
+                    id="state"
+                    placeholder="State"
+                    className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"
+                    defaultValue=""
+                  />
+                  <button
+                    tabIndex={-1}
+                    className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600"
+                  >
+                    <svg
+                      className="w-4 h-4 mx-2 fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1={18} y1={6} x2={6} y2={18} />
+                      <line x1={6} y1={6} x2={18} y2={18} />
+                    </svg>
+                  </button>
+                  <button
+                    tabIndex={-1}
+                    htmlFor="show_more"
+                    className="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600"
+                  >
+                    <svg
+                      className="w-4 h-4 mx-2 fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="18 15 12 9 6 15" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div className="md:col-span-1">
+                <label htmlFor="zipcode">Zipcode</label>
+                <input
+                  type="text"
+                  name="zipcode"
+                  id="zipcode"
+                  className="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                  placeholder=""
+                  defaultValue=""
+                />
+              </div>
+              <div className="md:col-span-5">
+                <div className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="billing_same"
+                    id="billing_same"
+                    className="form-checkbox"
+                  />
+                  <label htmlFor="billing_same" className="ml-2">
+                    My billing address is different than above.
+                  </label>
+                </div>
+              </div>
+              <div className="md:col-span-2">
+                <label htmlFor="soda">How many soda pops?</label>
+                <div className="h-10 w-28 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
+                  <button
+                    tabIndex={-1}
+                    htmlFor="show_more"
+                    className="cursor-pointer outline-none focus:outline-none border-r border-gray-200 transition-all text-gray-500 hover:text-blue-600"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4 mx-2"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  <input
+                    name="soda"
+                    id="soda"
+                    placeholder={0}
+                    className="px-2 text-center appearance-none outline-none text-gray-800 w-full bg-transparent"
+                    defaultValue={0}
+                  />
+                  <button
+                    tabIndex={-1}
+                    htmlFor="show_more"
+                    className="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-500 hover:text-blue-600"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4 mx-2 fill-current"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div className="md:col-span-5 text-right">
+                <div className="inline-flex items-end">
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <form>
-      <div className="md:flex mb-8">
-        <div className="md:w-1/3">
-          <legend className="uppercase tracking-wide text-sm">Location</legend>
-          <p className="text-xs font-light text-red">
-            This entire section is required.
-          </p>
-        </div>
-        <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
-          <div className="mb-4">
-            <label className="block uppercase tracking-wide text-xs font-bold">
-              Name
-            </label>
-            <input
-              className="w-full shadow-inner p-4 border-0"
-              type="text"
-              name="name"
-              placeholder="Acme Mfg. Co."
-            />
-          </div>
-          <div className="md:flex mb-4">
-            <div className="md:flex-1 md:pr-3">
-              <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                Street Address
-              </label>
-              <input
-                className="w-full shadow-inner p-4 border-0"
-                type="text"
-                name="address_street"
-                placeholder="555 Roadrunner Lane"
-              />
-            </div>
-            <div className="md:flex-1 md:pl-3">
-              <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                Building/Suite No.
-              </label>
-              <input
-                className="w-full shadow-inner p-4 border-0"
-                type="text"
-                name="address_number"
-                placeholder="#3"
-              />
-              <span className="text-xs mb-4 font-thin">
-                We lied, this isn't required.
-              </span>
-            </div>
-          </div>
-          <div className="md:flex mb-4">
-            <div className="md:flex-1 md:pr-3">
-              <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                Latitude
-              </label>
-              <input
-                className="w-full shadow-inner p-4 border-0"
-                type="text"
-                name="lat"
-                placeholder="30.0455542"
-              />
-            </div>
-            <div className="md:flex-1 md:pl-3">
-              <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                Longitude
-              </label>
-              <input
-                className="w-full shadow-inner p-4 border-0"
-                type="text"
-                name="lon"
-                placeholder="-99.1405168"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="md:flex mb-8">
-        <div className="md:w-1/3">
-          <legend className="uppercase tracking-wide text-sm">Contact</legend>
-        </div>
-        <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
-          <div className="mb-4">
-            <label className="block uppercase tracking-wide text-xs font-bold">
-              Phone
-            </label>
-            <input
-              className="w-full shadow-inner p-4 border-0"
-              type="tel"
-              name="phone"
-              placeholder="(555) 555-5555"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-              URL
-            </label>
-            <input
-              className="w-full shadow-inner p-4 border-0"
-              type="url"
-              name="url"
-              placeholder="acme.co"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-              Email
-            </label>
-            <input
-              className="w-full shadow-inner p-4 border-0"
-              type="email"
-              name="email"
-              placeholder="contact@acme.co"
-            />
-          </div>
-        </div>
-      </div>
-      <div className="md:flex">
-        <div className="md:w-1/3">
-          <legend className="uppercase tracking-wide text-sm">Social</legend>
-        </div>
-        <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
-          <div className="md:flex mb-4">
-            <div className="md:flex-1 md:pr-3">
-              <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                Facebook
-              </label>
-              <div className="w-full flex">
-                <span className="text-xs py-4 px-2 bg-grey-light text-grey-dark">
-                  facebook.com/
-                </span>
-                <input
-                  className="flex-1 shadow-inner p-4 border-0"
-                  type="text"
-                  name="facebook"
-                  placeholder="acmeco"
-                />
-              </div>
-            </div>
-            <div className="md:flex-1 md:pl-3 mt-2 md:mt-0">
-              <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                Twitter
-              </label>
-              <div className="w-full flex">
-                <span className="text-xs py-4 px-2 bg-grey-light text-grey-dark">
-                  twitter.com/
-                </span>
-                <input
-                  className="flex-1 shadow-inner p-4 border-0"
-                  type="text"
-                  name="twitter"
-                  placeholder="acmeco"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="md:flex mb-4">
-            <div className="md:flex-1 md:pr-3">
-              <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                Instagram
-              </label>
-              <div className="w-full flex">
-                <span className="text-xs py-4 px-2 bg-grey-light text-grey-dark">
-                  instagram.com/
-                </span>
-                <input
-                  className="flex-1 shadow-inner p-4 border-0"
-                  type="text"
-                  name="instagram"
-                  placeholder="acmeco"
-                />
-              </div>
-            </div>
-            <div className="md:flex-1 md:pl-3 mt-2 md:mt-0">
-              <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                Yelp
-              </label>
-              <div className="w-full flex">
-                <span className="text-xs py-4 px-2 bg-grey-light text-grey-dark">
-                  yelp.com/
-                </span>
-                <input
-                  className="flex-1 shadow-inner p-4 border-0"
-                  type="text"
-                  name="yelp"
-                  placeholder="acmeco"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="md:flex mb-6">
-        <div className="md:w-1/3">
-          <legend className="uppercase tracking-wide text-sm">
-            Description
-          </legend>
-        </div>
-        <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
-          <textarea
-            className="w-full shadow-inner p-4 border-0"
-            placeholder="We build fine acmes."
-            rows={6}
-            defaultValue={""}
-          />
-        </div>
-      </div>
-      <div className="md:flex mb-6">
-        <div className="md:w-1/3">
-          <legend className="uppercase tracking-wide text-sm">
-            Cover Image
-          </legend>
-        </div>
-        <div className="md:flex-1 px-3 text-center">
-          <div className="button bg-gold hover:bg-gold-dark text-cream mx-auto cusor-pointer relative">
-            <input
-              className="opacity-0 absolute pin-x pin-y"
-              type="file"
-              name="cover_image"
-            />
-            Add Cover Image
-          </div>
-        </div>
-      </div>
-      <div className="md:flex mb-6 border border-t-1 border-b-0 border-x-0 border-cream-dark">
-        <div className="md:flex-1 px-3 text-center md:text-right">
-          <input type="hidden" name="sponsor" defaultValue={0} />
-          <input
-            className="button text-cream-lighter bg-brick hover:bg-brick-dark"
-            type="submit"
-            defaultValue="Create Location"
-          />
-        </div>
-      </div>
-    </form>
-  </section>
-</main>
+    <a
+      href="https://www.buymeacoffee.com/dgauderman"
+      target="_blank"
+      className="md:absolute bottom-0 right-0 p-4 float-right"
+    >
+      <img
+        src="https://www.buymeacoffee.com/assets/img/guidelines/logo-mark-3.svg"
+        alt="Buy Me A Coffee"
+        className="transition-all rounded-full w-14 -rotate-45 hover:shadow-sm shadow-lg ring hover:ring-4 ring-white"
+      />
+    </a>
+  </div>
+</div>
 
+</>
   )
 }
 

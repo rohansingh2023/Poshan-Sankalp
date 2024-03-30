@@ -1,8 +1,8 @@
-import React, { useEffect} from "react";
+import React, { useEffect, useState} from "react";
 import Link from "next/link";
 import { useData } from "../../../context/DataContext";
 export default function Navbar(props) {
-
+  const [showUserName, setShowUserName] = useState(true);
   const { arrData, updateArrData, currUser } = useData();
   console.log("current user", currUser);
   const googleTranslateElementInit = () => {
@@ -15,7 +15,10 @@ export default function Navbar(props) {
     );
   };
   useEffect(() => {
-    var addScript = document.createElement("script");
+    var addScript = document.cre
+    
+    
+    ateElement("script");
     addScript.setAttribute(
       "src",
       "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
@@ -130,7 +133,7 @@ export default function Navbar(props) {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-8 h-8 py-1"
+                    className="w-6 h-6 py-1"
                   >
                     <path
                       strokeLinecap="round"
