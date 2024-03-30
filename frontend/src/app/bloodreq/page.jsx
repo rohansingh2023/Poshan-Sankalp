@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, seState, useState } from "react";
 
 import BankRow from "@/components/bankrow/BankRow";
 import { useData } from "../../../context/DataContext";
 import IndexNavbar from "@/components/Navbars/IndexNavbar";
 import AdminNavbar from "@/components/Navbars/AdminNavbar";
+import { ToastContainer, toast } from 'react-toastify';
 const Bloodreq = () => {
   const { arrData , updateArrData } = useData();
   const [formData, setformData] = useState({
@@ -29,7 +30,7 @@ const Bloodreq = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3000/api/auth/bloodreq", {
+      const res = await fetch("http://localhost:3000/api/getbanks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,18 +42,23 @@ const Bloodreq = () => {
       // }
       // Parse the response as JSON
       const data = await res.json();
+
       if (res.status == 200) {
-        console.log(data.availableBloodbanks);
+        console.log("naamee",data.availableBloodbanks[4].userId);
         updateArrData(data.availableBloodbanks);
         console.log("Data:", arrData);
         // Alert that blood is available
-        alert("Blood is available");
+        toast.success("The required blood is available", {
+          position: "top-center"
+        });
       }
       if (res.status == 404) {
         updateArrData([]);
-        alert("Sorry, The Blood that you are searching for is not available");
+        toast.warn("The required blood is not available", {
+          position: "top-center"
+        });
       }
-
+      
       const targetDiv = document.getElementById("scroll-div");
       targetDiv.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (error) {
@@ -232,6 +238,9 @@ const Bloodreq = () => {
                     <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">
                       Address
                     </th>
+                    <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">
+                      Request for blood
+                    </th>
                     <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700" />
                   </tr>
                 </thead>
@@ -244,6 +253,8 @@ const Bloodreq = () => {
                         email={item.email}
                         contact={item.phone}
                         address={item.address}
+                        userId={item.userId}
+                        bankId={item._id}
                       />
                     ))}
                 </tbody>

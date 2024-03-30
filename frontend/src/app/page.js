@@ -10,7 +10,9 @@ import Image from "next/image";
 import Layout from "@/components/Layout";
 
 
+
 export default function Index() {
+
   return (
     <Layout title="Home / Blood Care">
       <IndexNavbar fixed />

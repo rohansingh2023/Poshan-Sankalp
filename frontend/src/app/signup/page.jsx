@@ -39,7 +39,7 @@ function page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/api/auth/users', {
+      const response = await fetch('http://localhost:3000/api/auth/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

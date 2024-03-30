@@ -1,8 +1,9 @@
 "use client"
 import React from 'react'
 
-function BankRow({name, email, address, contact}) {
-  console.log(name, email, address, contact)
+function BankRow({name, email, address, contact, userId, bankId}) {
+  console.log("bank id",bankId);
+
   
   return (
     <tr>
@@ -35,45 +36,13 @@ function BankRow({name, email, address, contact}) {
                     {address}{" "}
                   </span>
                 </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                  <a
-                    href="#pablo"
-                    className="text-blueGray-500 block py-1 px-3"
-                    onclick="openDropdown(event,'table-dark-1-dropdown')"
-                  >
-                    <i className="fas fa-ellipsis-v" />
-                  </a>
-                  <div
-                    className="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
-                    id="table-dark-1-dropdown"
-                  >
-                    <a
-                      href="#pablo"
-                      className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                    >
-                      Action
-                    </a>
-                    <a
-                      href="#pablo"
-                      className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                    >
-                      Another action
-                    </a>
-                    <a
-                      href="#pablo"
-                      className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                    >
-                      Something else here
-                    </a>
-                    <div className="h-0 my-2 border border-solid border-blueGray-100" />
-                    <a
-                      href="#pablo"
-                      className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                    >
-                      Seprated link
-                    </a>
-                  </div>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                <span className="ml-3 font-bold text-white">
+                    {" "}
+                    <button type="button" class="px-3 py-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Request a blood</button>{" "}
+                  </span>
                 </td>
+                
               </tr>
   )
 }

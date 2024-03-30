@@ -12,6 +12,8 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colorAdjust: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+      printColorAdjust: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
     },
   },
   plugins: [],
