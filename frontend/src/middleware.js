@@ -21,5 +21,5 @@ export async function middleware(request){
 }
 
 export const config = {
-    matcher: ['/bloodcamp/:path*', '/login1/:path*', '/signup/:path*', '/bookAp/:path*'],
+    matcher: ['/bloodcamp/:path*', '/login1/:path*', '/signup/:path*', '/bookAp/:path*', '/bloodreq/:path*'],
   }

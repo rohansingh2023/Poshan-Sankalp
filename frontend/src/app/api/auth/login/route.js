@@ -41,7 +41,7 @@ export const POST = async (req) => {
 
         const response = new NextResponse(JSON.stringify({
             success: true,
-            message: `User logged in successfully my love`,
+            message: `logged in successfully `,
             user
         }), { status: 200, headers: { 'Content-Type': 'application/json' } })
 

@@ -1,9 +1,12 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { toast } from 'react-toastify';
 import { useData } from "../../../context/DataContext";
 export default function Navbar(props) {
   const [showUserName, setShowUserName] = useState(true);
-  const { arrData, updateArrData, currUser } = useData();
+  const { arrData, updateArrData, currUser, updatecurrUser } = useData();
+  const logoName = currUser ? currUser.name.split(' ')[0].charAt(0).toUpperCase() : '';
+
   console.log("current user", currUser);
   const googleTranslateElementInit = () => {
     new window.google.translate.TranslateElement(
@@ -15,10 +18,7 @@ export default function Navbar(props) {
     );
   };
   useEffect(() => {
-    var addScript = document.cre
-    
-    
-    ateElement("script");
+    var addScript = document.createElement("script");
     addScript.setAttribute(
       "src",
       "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
@@ -28,6 +28,23 @@ export default function Navbar(props) {
     console.log("kjnkas");
   }, []);
 
+  const Logout = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/logout", {
+        method: "POST"
+      })
+      if(res.ok){
+        toast.success("Succsessfully logged out ", {
+          position: "top-center"
+        });
+        updatecurrUser();
+      }
+    } catch (error) {
+      toast.warn("you are not logged out, please try again", {
+        position: "top-center"
+      });
+    }
+  }
 
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
@@ -122,7 +139,7 @@ export default function Navbar(props) {
                   </div>
                 </Link>
               </li> */}
-              <li className="flex items-center h-12">
+              {/* <li className="flex items-center h-12">
                 <div
                   className="px-3 text-xs uppercase flex flex-row pb-1 font-bold"
                   id="google_translate_element"
@@ -142,27 +159,45 @@ export default function Navbar(props) {
                     />
                   </svg>
                 </div>
-              </li>
+              </li> */}
+
               {
-                showUserName && currUser &&(
-                  <li className="text-sm mr-4 hover:underline md:mr-2">
-                    {currUser.name}
-                  </li>
-                ) 
+                showUserName && currUser && (
+                  <>
+                    <div class="inline-block relative">
+                      <div class="w-10 h-10 mr-4 bg-blue-500 rounded-full flex items-center justify-center">
+                        <span class="text-white text-lg font-bold">{logoName}</span>
+                      </div>
+                      <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full">
+                      </div>
+                    </div>
+                    <div>
+                      <button onClick={Logout} class="p-2 border border-black text-m uppercase rounded-full rounded-br-none outline-none shadow-lg hover:shadow-xl hover:rounded-full duration-200">Logout</button>
+                    </div>
+                  </>
+
+
+                )
               }
-              <li className="text-sm mr-4 hover:underline md:mr-2">
-                <Link href="/signup">
-                  <img width="45" height="45" src="https://img.icons8.com/external-bearicons-detailed-outline-bearicons/64/external-signup-call-to-action-bearicons-detailed-outline-bearicons.png"
-                    alt="external-signup-call-to-action-bearicons-detailed-outline-bearicons" />
-                </Link>
-              </li>
-              <li className="text-sm mr-4 hover:underline md:mr-2">
-                <Link href="/login1">
-                  <img
-                    width="45" height="45" src="https://img.icons8.com/ios-filled/50/login-rounded-right.png"
-                    alt="login-rounded-right" />
-                </Link>
-              </li>
+
+              {
+                showUserName && !currUser && (
+                  <>
+                    <li className="text-sm mr-4 hover:underline md:mr-2">
+                      <Link href="/signup">
+                        <img width="45" height="45" src="https://img.icons8.com/external-bearicons-detailed-outline-bearicons/64/external-signup-call-to-action-bearicons-detailed-outline-bearicons.png"
+                          alt="external-signup-call-to-action-bearicons-detailed-outline-bearicons" />
+                      </Link>
+                    </li>
+                    <li className="text-sm mr-4 hover:underline md:mr-2">
+                      <Link href="/login1">
+                        <img
+                          width="45" height="45" src="https://img.icons8.com/ios-filled/50/login-rounded-right.png"
+                          alt="login-rounded-right" />
+                      </Link>
+                    </li></>
+                )
+              }
 
               {/* <li className="flex items-center">
                 <a

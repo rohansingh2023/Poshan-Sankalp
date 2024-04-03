@@ -17,7 +17,7 @@ const bloodRequestSchema = new Schema({
         required: true
     },
     urgent: {
-        type: Boolean,
+        type: String,
         required: true
     },
     hospitalName: {
@@ -28,7 +28,7 @@ const bloodRequestSchema = new Schema({
         type: String,
         
     },
-    bankId: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },

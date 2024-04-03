@@ -1,25 +1,26 @@
 "use client";
 import React, { useEffect, seState, useState } from "react";
-
 import BankRow from "@/components/bankrow/BankRow";
 import { useData } from "../../../context/DataContext";
 import IndexNavbar from "@/components/Navbars/IndexNavbar";
 import AdminNavbar from "@/components/Navbars/AdminNavbar";
 import { ToastContainer, toast } from 'react-toastify';
 const Bloodreq = () => {
-  const { arrData , updateArrData } = useData();
+  const { arrData, updateArrData, currUser } = useData();
   const [formData, setformData] = useState({
     bloodType: "apos",
     quantity: 0,
-    urgency: "urgent",
-    disease: "brainStrom",
-    hospital: "",
-    additionalInfo: "",
+    urgent: "",
+    reason: "brainStrom",
+    hospitalName: "",
+    address:"",
+    userId:currUser ? currUser._id : null
   });
 
+  
   const handleChange = async (e) => {
     const { name, value } = e.target;
-    console.log(arrData);
+    console.log("form data",formData);
     setformData({
       ...formData,
       [name]: value,
@@ -42,11 +43,10 @@ const Bloodreq = () => {
       // }
       // Parse the response as JSON
       const data = await res.json();
-
+      console.log(data.availableBloodbanks)
       if (res.status == 200) {
-        console.log("naamee",data.availableBloodbanks[4].userId);
         updateArrData(data.availableBloodbanks);
-        console.log("Data:", arrData);
+        console.log("Data of available bank:", arrData[0].userId);
         // Alert that blood is available
         toast.success("The required blood is available", {
           position: "top-center"
@@ -169,10 +169,10 @@ const Bloodreq = () => {
             </label>
             <input
               type="text"
-              id="hospital"
-              name="hospital"
+              id="hospitalNama"
+              name="hospitalName"
               onChange={handleChange}
-              value={formData.hospital}
+              value={formData.hospitalName}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 h-12 px-4 text-lg"
             />
           </div>
@@ -181,13 +181,13 @@ const Bloodreq = () => {
               for="additionalInfo"
               className="block text-sm font-medium text-gray-700"
             >
-              Additional Information
+              Address
             </label>
             <textarea
-              id="additionalInfo"
-              name="additionalInfo"
+              id="address"
+              name="address"
               onChange={handleChange}
-              value={formData.additionalInfo}
+              value={formData.address}
               className="mt-1 block h-40 w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200"
             ></textarea>
           </div>
@@ -255,6 +255,9 @@ const Bloodreq = () => {
                         address={item.address}
                         userId={item.userId}
                         bankId={item._id}
+                        formData={formData}
+
+                        
                       />
                     ))}
                 </tbody>

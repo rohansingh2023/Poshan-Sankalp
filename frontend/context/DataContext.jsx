@@ -8,7 +8,7 @@ const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [arrData, setArrData] = useState([]);
   const [currUser, setCurrUser] = useState(undefined);
-
+  
   // const callApi = async()=>{
   //     const res = fetch('api/')
   // }
@@ -16,6 +16,9 @@ export const DataProvider = ({ children }) => {
     setArrData(newData);
   };
 
+  const updatecurrUser =()=>{
+    setCurrUser(undefined);
+  }
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -35,7 +38,7 @@ export const DataProvider = ({ children }) => {
 
   
   return (
-    <DataContext.Provider value={{ arrData, updateArrData, currUser }}>
+    <DataContext.Provider value={{ arrData, updateArrData, currUser, updatecurrUser }}>
       {children}
     </DataContext.Provider>
   );

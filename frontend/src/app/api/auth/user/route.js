@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import User from "@/models/users";
 export const POST = async (request) => {
+  await connectDB();
   try {
   const { name, email, phone, address, bloodGroup, isDoner, password } = await request.json();
 
@@ -36,7 +37,6 @@ console.log(hashedPassword);
 export const GET = async () => {
     try {
         await connectDB(); // Assuming connectDB establishes the database connection
-
         // Fetch all users from the database
         const users = await User.find();
 

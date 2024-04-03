@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import Bloodbank from '@/models/bloodbanks';
 
 export const POST = async (req) => {
-    
+    await connectDB(); // Assuming connectDB establishes the database connection
     try {
         const { bloodType, quantity } = await req.json();
         console.log(quantity);
@@ -31,7 +31,7 @@ export const POST = async (req) => {
 }
 
 export const GET = async () => {
-    
+    await connectDB(); // Assuming connectDB establishes the database connection
     console.log("hello adityA");
 
     const all_bloodbank = await Bloodbank.find();
