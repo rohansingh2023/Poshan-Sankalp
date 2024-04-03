@@ -6,8 +6,8 @@ export const POST = async (request) => {
         console.log(name,"  ", address )
 
          // Initialize Twilio client with your account SID and auth token
-         const accountSid = 'ACa51b191fb51dde22cc954c24b7613b80';
-         const authToken = 'e85819067041e45c9dc5f13337b86443';
+         const accountSid = process.env.ACCOUNTSID;
+         const authToken = process.env.AUTHTOKEN;
          const client = twilio(accountSid, authToken);
 
          await client.messages.create({
