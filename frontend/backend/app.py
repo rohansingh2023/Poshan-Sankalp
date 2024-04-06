@@ -14,12 +14,13 @@ import jinja2
 import pdfkit
 from langchain.document_loaders import TextLoader
 from langchain.indexes import VectorstoreIndexCreator
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyAfItvxFBe_CzrjqOokhzkBEoHMpNyvOb8"
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["GOOGLE_API_KEY"] = os.environ.get('GOOGLE_API')
+os.environ["OPENAI_API_KEY"] = os.environ.get('OPENAI_API')
 
 def get_pdf_text(pdf_path):
     text = ""
