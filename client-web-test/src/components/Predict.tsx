@@ -4,9 +4,9 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 interface Result {
+  wasting: number;
   Stunting: number;
   Underweight_Overweight: number;
-  wasting: number;
 }
 
 const Predict = () => {
@@ -24,7 +24,7 @@ const Predict = () => {
     }
     setFile(e.target.files[0]);
   };
-  console.log(file);
+  // console.log(file);
 
   const handleSubmit = async () => {
     const formData = new FormData();
@@ -33,7 +33,7 @@ const Predict = () => {
     const id = toast.loading("Predicting....");
     try {
       const res = await axios.post(
-        "http://127.0.0.1:5000/predict-v1",
+        "http://127.0.0.1:5000/predict-v2",
         formData,
         {
           headers: {
@@ -47,7 +47,7 @@ const Predict = () => {
       toast.success("Prediction successfull", {
         id,
       });
-      // console.log(res.data);
+      console.log(res.data);
     } catch (error) {
       console.log(error);
       toast.error(`${error}`, {
@@ -98,7 +98,7 @@ const Predict = () => {
     }
   }, [result?.Stunting, result?.Underweight_Overweight, result?.wasting]);
 
-  console.log(result);
+  // console.log(result);
 
   return (
     <div id="predict" className="h-fit py-5 w-11/12 rounded-md bg-[#caf0f8]">

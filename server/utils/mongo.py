@@ -1,0 +1,1 @@
+mongo_url = "mongodb+srv://nimisha:navrang@cluster1.9itkyjf.mongodb.net/"

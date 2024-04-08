@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -15,9 +15,11 @@ const Navbar = () => {
         >
           Predict
         </a>
-        <h2 className="text-lg font-semibold bg-red-400 p-2 rounded-md">
-          Dashboard
-        </h2>
+        <Link to={"/dashboard"}>
+          <h2 className="text-lg font-semibold bg-red-400 p-2 rounded-md">
+            Dashboard
+          </h2>
+        </Link>
       </div>
     </div>
   );
