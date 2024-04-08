@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect } from "react";
 
 import Link from "next/link";
@@ -9,10 +9,7 @@ import ChatBot from "@/components/ChatBot";
 import Image from "next/image";
 import Layout from "@/components/Layout";
 
-
-
 export default function Index() {
-
   return (
     <Layout title="Home / Blood Care">
       <IndexNavbar fixed />
@@ -21,10 +18,17 @@ export default function Index() {
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
             <div className="pt-32 sm:pt-0">
               <h2 className="font-semibold text-4xl text-blueGray-600">
-              Blood Camp: Transforming Healthcare with Predictive AI
+                Poshan Sankalp: Transforming Healthcare with Predictive AI and
+                Telemedicine
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-              Welcome to the BloodCare Blood Camp, where we bring revolutionary healthcare to your doorstep. BloodCare harnesses the power of predictive AI to optimize blood management, ensuring swift and efficient responses to blood-related emergencies. Join us at our camp as we integrate cutting-edge speech analysis, text extraction, and computer vision technologies to transform the way we address urgent blood-related assistance.
+                Malnutrition, a global health concern, encompasses
+                undernutrition, overnutrition, and micronutrient deficiencies.
+                It affects physical and cognitive development, immune function,
+                and overall health. Addressing malnutrition requires holistic
+                interventions, including access to nutritious food, healthcare,
+                education, and socioeconomic empowerment, to ensure optimal
+                nutrition for all individuals worldwide.
               </p>
               <div className="mt-12">
                 <Link href="/bloodcamp">
@@ -101,14 +105,15 @@ export default function Index() {
                     ></polygon>
                   </svg>
                   <h4 className="text-xl mt-0 font-bold text-white">
-                  Healthcare emergency response system
+                    Healthcare emergency response system
                   </h4>
                   <p className="text-md font-light mt-2 text-white">
-                  The objective of IntelliCare  is to deploy cutting-edge AI, 
-                  machine learning, and telemedicine technologies to craft an 
-                  all-encompassing healthcare emergency response system. our
-                   proposed solution seeks to redefine emergency medical services,
-                    placing a premium on compassionate and swift decision-making. 
+                    The objective of IntelliCare is to deploy cutting-edge AI,
+                    machine learning, and telemedicine technologies to craft an
+                    all-encompassing healthcare emergency response system. our
+                    proposed solution seeks to redefine emergency medical
+                    services, placing a premium on compassionate and swift
+                    decision-making.
                   </p>
                 </blockquote>
               </div>
@@ -118,7 +123,7 @@ export default function Index() {
                 <div className="w-full md:w-6/12 px-4">
                   <div className="relative flex flex-col mt-4">
                     <div className="px-4 py-5 flex-auto">
-                      <div  className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
+                      <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -134,12 +139,13 @@ export default function Index() {
                           />
                         </svg>
                       </div>
-                      <h6 className="text-xl mb-1 font-semibold">
-                      Automated flagging:
+                      <h6 className="text-xl mb-1 font-semibold text-black">
+                        Automated flagging:
                       </h6>
                       <p className="mb-4 text-blueGray-500">
-              
-                      Implementing a system that automatically identifies and flags potential instances of cyber bullying based on predefined criteria, enabling timely detection.
+                        Implementing a system that automatically identifies and
+                        flags potential instances of cyber bullying based on
+                        predefined criteria, enabling timely detection.
                       </p>
                     </div>
                   </div>
@@ -161,11 +167,13 @@ export default function Index() {
                           />
                         </svg>
                       </div>
-                      <h6 className="text-xl mb-1 font-semibold">
-                      Reporting mechanism: 
+                      <h6 className="text-xl mb-1 font-semibold text-black">
+                        Reporting mechanism:
                       </h6>
                       <p className="mb-4 text-blueGray-500">
-                      Establishing a user-friendly and accessible platform for individuals to report instances of cyber bullying, facilitating effective reporting and intervention
+                        Establishing a user-friendly and accessible platform for
+                        individuals to report instances of cyber bullying,
+                        facilitating effective reporting and intervention
                       </p>
                     </div>
                   </div>
@@ -189,13 +197,13 @@ export default function Index() {
                           />
                         </svg>
                       </div>
-                      <h6 className="text-xl mb-1 font-semibold">
-                      Incident tracking:
+                      <h6 className="text-xl mb-1 font-semibold text-black">
+                        Incident tracking:
                       </h6>
                       <p className="mb-4 text-blueGray-500">
-                        
-                       Developing a robust system to track and monitor reported cyber bullying incidents, enabling efficient management and follow-up actions.
-                
+                        Developing a robust system to track and monitor reported
+                        cyber bullying incidents, enabling efficient management
+                        and follow-up actions.
                       </p>
                     </div>
                   </div>
@@ -217,11 +225,13 @@ export default function Index() {
                           />
                         </svg>
                       </div>
-                      <h6 className="text-xl mb-1 font-semibold">
-                      Filtering and blocking:
+                      <h6 className="text-xl mb-1 font-semibold text-black">
+                        Filtering and blocking:
                       </h6>
                       <p className="mb-4 text-blueGray-500">
-                       Implementing effective filters and blocking mechanisms to prevent cyber bullying content from being displayed or circulated, promoting a safer online environment.
+                        Implementing effective filters and blocking mechanisms
+                        to prevent cyber bullying content from being displayed
+                        or circulated, promoting a safer online environment.
                       </p>
                     </div>
                   </div>
@@ -256,9 +266,11 @@ export default function Index() {
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg -mt-64 py-16 px-12 relative z-10">
             <div className="w-full text-center lg:w-8/12">
-              <h3 className="font-semibold text-3xl">Let&apos;s get started</h3>
+              <h3 className="font-semibold text-3xl text-black">
+                Let&apos;s get started
+              </h3>
               <p className="text-blueGray-500 text-lg leading-relaxed mt-4 mb-4">
-                IntelliCare  - Smart Security
+                Poshan Sankalp and Telemedicine
               </p>
               <div className="sm:block flex flex-col mt-10">
                 <Link href="/">

@@ -1,23 +1,23 @@
 "use client";
 import React, { useState } from "react";
 import IndexNavbar from "@/components/Navbars/IndexNavbar";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 export default function Disease() {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [imageSrc, setImageSrc] = useState(null);
-  const [analysisResult, setanalyzedData]= useState(null);
+  const [analysisResult, setanalyzedData] = useState(null);
 
   const handleFileChange = (e) => {
-    if(analysisResult){
+    if (analysisResult) {
       setanalyzedData(null);
     }
-    
+
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
     toast.success("YOUR FILE SUCCCSESSFULLY UPLOADED", {
-      position: "top-center"
+      position: "top-center",
     });
     // Display the selected image preview (optional)
   };
@@ -42,11 +42,11 @@ export default function Disease() {
         console.log("Analysis Result:", data);
         setanalyzedData(data);
         const targetDiv = document.getElementById("scroll-div");
-      targetDiv.scrollIntoView({ behavior: "smooth", block: "start" });
+        targetDiv.scrollIntoView({ behavior: "smooth", block: "start" });
         // Handle analysis result as needed
       } else {
         toast.warn("Failed to analyze", {
-          position: "top-center"
+          position: "top-center",
         });
       }
     } catch (error) {
@@ -56,15 +56,15 @@ export default function Disease() {
     }
   };
 
-  const clear =()=>{
-    if(analysisResult){
+  const clear = () => {
+    if (analysisResult) {
       setanalyzedData(null);
     }
-  }
+  };
   return (
     <>
       <IndexNavbar fixed />
-      <section className="relative py-20">
+      <section className="relative py-20 mt-3">
         <div
           className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden "
           style={{ transform: "translateZ(0)" }}
@@ -198,16 +198,16 @@ export default function Disease() {
             </button>
           </form>
           <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded"
-              onClick={clear}
-            >
-              Clear
-            </button>
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded"
+            onClick={clear}
+          >
+            Clear
+          </button>
         </div>
         {/* Display analysis result if available */}
         {analysisResult && (
-          <div className="container mx-auto px-4 mt-8 scroll-div">
+          <div className="container mx-auto px-4 mt-8 scroll-div text-black">
             <h3 className="text-2xl font-semibold mb-4">Analysis Result:</h3>
             <div className="bg-gray-200 p-4 rounded-lg">
               {Object.keys(analysisResult).map((question, index) => (

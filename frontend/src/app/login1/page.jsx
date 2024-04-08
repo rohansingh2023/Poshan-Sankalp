@@ -1,11 +1,11 @@
 "use client";
-import axios from 'axios';
+import axios from "axios";
 import React, { useState } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import IndexNavbar from "@/components/Navbars/IndexNavbar";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function page() {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -22,57 +22,53 @@ function page() {
     console.log(formData);
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-        const response = await fetch("http://localhost:3000/api/auth/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-        });
+      const response = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-        if (!response.ok) {
-            // Handle non-OK response
-            if (response.status === 401) {
-              toast.warn("Unauthorized access. Please check your credentials.", {
-                position: "top-center"
-              });
-                
-            } else if (response.status === 400) {
-              toast.warn("Password Wrong", {
-                position: "top-center"
-              });
-            } else {
-                alert("An error occurred while processing your request.");
-            }
-            return;
-        }
-
-        const data = await response.json();
-
-        if (data.success) {
-            // Handle successful login
-            toast.success(data.message, {
-              position: "top-center"
-            });
-            router.push('/');
+      if (!response.ok) {
+        // Handle non-OK response
+        if (response.status === 401) {
+          toast.warn("Unauthorized access. Please check your credentials.", {
+            position: "top-center",
+          });
+        } else if (response.status === 400) {
+          toast.warn("Password Wrong", {
+            position: "top-center",
+          });
         } else {
-            // Handle failure response
-            alert("An error occurred while processing your request.");
+          alert("An error occurred while processing your request.");
         }
-    } catch (error) {
-        console.error("Error:", error);
-        // Handle network or other errors
+        return;
+      }
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Handle successful login
+        toast.success(data.message, {
+          position: "top-center",
+        });
+        router.push("/");
+      } else {
+        // Handle failure response
         alert("An error occurred while processing your request.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle network or other errors
+      alert("An error occurred while processing your request.");
     }
-};
+  };
 
-
-  
   return (
     <>
       <IndexNavbar fixed />
@@ -83,7 +79,7 @@ function page() {
               <div className="flex items-center xl:p-10">
                 <form
                   onSubmit={handleSubmit}
-                  className="flex flex-col w-full h-full pb-6 text-center bg-white rounded-3xl"
+                  className="flex flex-col w-full h-full pb-6 text-center bg-white text-black rounded-3xl"
                 >
                   <h3 className="mb-3 text-4xl font-extrabold text-dark-grey-900">
                     Sign In

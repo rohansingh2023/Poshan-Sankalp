@@ -4,7 +4,7 @@ import BankRow from "@/components/bankrow/BankRow";
 import { useData } from "../../../context/DataContext";
 import IndexNavbar from "@/components/Navbars/IndexNavbar";
 import AdminNavbar from "@/components/Navbars/AdminNavbar";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 const Bloodreq = () => {
   const { arrData, updateArrData, currUser } = useData();
   const [formData, setformData] = useState({
@@ -13,14 +13,13 @@ const Bloodreq = () => {
     urgent: "",
     reason: "brainStrom",
     hospitalName: "",
-    address:"",
-    userId:currUser ? currUser._id : null
+    address: "",
+    userId: currUser ? currUser._id : null,
   });
 
-  
   const handleChange = async (e) => {
     const { name, value } = e.target;
-    console.log("form data",formData);
+    console.log("form data", formData);
     setformData({
       ...formData,
       [name]: value,
@@ -43,22 +42,22 @@ const Bloodreq = () => {
       // }
       // Parse the response as JSON
       const data = await res.json();
-      console.log(data.availableBloodbanks)
+      console.log(data.availableBloodbanks);
       if (res.status == 200) {
         updateArrData(data.availableBloodbanks);
         console.log("Data of available bank:", arrData[0].userId);
         // Alert that blood is available
         toast.success("The required blood is available", {
-          position: "top-center"
+          position: "top-center",
         });
       }
       if (res.status == 404) {
         updateArrData([]);
         toast.warn("The required blood is not available", {
-          position: "top-center"
+          position: "top-center",
         });
       }
-      
+
       const targetDiv = document.getElementById("scroll-div");
       targetDiv.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (error) {
@@ -69,9 +68,11 @@ const Bloodreq = () => {
 
   return (
     <>
-    <IndexNavbar fixed />
+      <IndexNavbar fixed />
       <div className="container mx-auto mt-12 px-4">
-        <h1 className="text-3xl font-semibold mb-4">Request Blood</h1>
+        <h1 className="text-3xl font-semibold mb-4 text-black">
+          Request Blood
+        </h1>
         <form
           className="bg-white p-12 m-12 rounded-lg shadow-2xl"
           onSubmit={handleSubmit}
@@ -256,8 +257,6 @@ const Bloodreq = () => {
                         userId={item.userId}
                         bankId={item._id}
                         formData={formData}
-
-                        
                       />
                     ))}
                 </tbody>
